@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pudim • .NET &amp; C#</title>
+  <meta name="description" content="Recriação minimalista e fofa do clássico pudim com C# e .NET.">
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍮</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="pudim-stage" id="main-stage">
+    
+    <div class="title-wrapper">
+      <h1 class="pudim-title">
+        <span class="title-text">PUDIM</span><span class="title-dot">.</span>
+      </h1>
+      <p class="subtitle">
+        <span class="badge-code">pudim.Jiggle();</span>
+      </p>
+    </div>
+
+    <div class="pudim-card-container">
+      <div id="speech-bubble" class="speech-bubble" aria-live="polite">
+        pudim.Jiggle();
+      </div>
+
+      <div class="photo-frame" id="pudim-interactive" role="button" tabindex="0"
+        aria-label="Pudim. Clique para balançar!">
+        <div class="photo-inner">
+          <img id="pudim-img" src="pudim.png" alt="Pudim com calda de caramelo roxa e bandeirinha C#"
+            class="vintage-photo" draggable="false" />
+        </div>
+      </div>
+
+      <div class="pudim-shadow" id="pudim-shadow"></div>
+    </div>
+
+    <div class="pudim-stats">
+      <div class="stat-item">
+        <span class="stat-number" id="wobble-count">0</span>
+        <span class="stat-label">cutucadas</span>
+      </div>
+    </div>
+
+    <div class="csharp-action">
+      <button id="open-recipe-btn" class="recipe-btn">
+        <span class="csharp-emblem">C#</span>
+        <span>Ver Pudim.cs (Código Fonte em C#)</span>
+      </button>
+    </div>
+
+  </main>
+
+  <dialog id="recipe-modal" class="code-modal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="modal-filename">
+          <span class="file-badge">C#</span>
+          Pudim.cs
+        </div>
+        <button id="close-recipe-btn" class="close-btn" aria-label="Fechar código">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <pre><code class="csharp-code"><span class="kw">namespace</span> <span class="type">Sobremesas.Brasil</span>;
+
+<span class="kw">public abstract class</span> <span class="type">Sobremesa</span>
+{
+    <span class="kw">public abstract string</span> Nome { <span class="kw">get</span>; }
+    <span class="kw">public virtual void</span> <span class="fn">Servir</span>()
+    {
+        <span class="type">Console</span>.<span class="fn">WriteLine</span>(<span class="str">"Servindo sobremesa tradicional."</span>);
+    }
+}
+
+<span class="kw">public class</span> <span class="type">Pudim</span> : <span class="type">Sobremesa</span>
+{
+    <span class="kw">public override string</span> Nome =&gt; <span class="str">"Pudim de Leite Condensado"</span>;
+    <span class="kw">public string</span> Textura { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="str">"Aveludada &amp; Cremosa"</span>;
+    <span class="kw">public bool</span> TemFurinhos { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="kw">true</span>;
+    <span class="kw">public double</span> NivelCaldaDeCaramelo { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="num">100.0</span>;
+
+    <span class="kw">public override void</span> <span class="fn">Servir</span>()
+    {
+        <span class="type">Console</span>.<span class="fn">WriteLine</span>(<span class="str">"Servindo uma fatia aveludada com calda roxa."</span>);
+    }
+
+    <span class="kw">public async Task</span> <span class="fn">JiggleAsync</span>()
+    {
+        <span class="type">Console</span>.<span class="fn">WriteLine</span>(<span class="str">"Wooble wooble!"</span>);
+        <span class="kw">await Task</span>.<span class="fn">Yield</span>();
+    }
+}</code></pre>
+      </div>
+
+      <div class="modal-footer">
+        <span class="tech-badge-subtle">.NET 10.0 • C# 14.0</span>
+        <button id="modal-wobble-trigger" class="modal-action-btn">Cutucar Pudim</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer">
+    <div class="footer-csharp-tag">
+      <span style="cursor: pointer;"><u>pudimsharp@pudimsharp.net</u></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
